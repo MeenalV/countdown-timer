@@ -17,9 +17,9 @@ export class AppComponent {
 	  sec = 0;  
   
 	startTimer(term){	
-		this.valueN.nativeElement.value = 0;
+		this.valueN.nativeElement.value = '';
 
-		if(term%1 != 0 || term <= 0){
+		if((term%1 != 0 || term < 0) || sec == 0){
 			this.timeUpMsg = 'wrong input' ;
 			alert(this.timeUpMsg) ;
 		}	
@@ -43,10 +43,11 @@ export class AppComponent {
 				  	const minutes = Math.floor((time/60)%60);
 				  	const hours = Math.floor((time/60)/60) ;
 				  	const seconds = time % 60 ;
+				  	if(sec> 0){
 				  	this.minutes = (minutes < 10) ? '0' + minutes : '' + minutes ;
 				  	this.seconds = (seconds < 10) ? '0' + seconds : '' + seconds ;
 				  	this.hours = (hours < 10) ? '0' + hours : '' + hours ;
-					
+					}
 					if(this.time == 0){
 						this.timeUpMsg = "And the Time is up!!!"  ;
 						alert(this.timeUpMsg) ;
